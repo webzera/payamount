@@ -17,8 +17,8 @@ return [
     'paypal' => [
         'id' => env('PAYPAL_ID'),
         'secret' => env('PAYPAL_SECRET'),
-        'ret-success' => request()->getSchemeAndHttpHost().'/payment/excute',
-        'ret-cancel' => request()->getSchemeAndHttpHost().'/payment/cancel',
+        'ret-success' => 'http://yourhostname/payment/excute',
+        'ret-cancel' => 'http://yourhostname/payment/cancel',
     ],
 
 ];

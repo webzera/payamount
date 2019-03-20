@@ -5,9 +5,10 @@
     composer require webzera/payamount
 
     And php artisan vendor:publish --provider "Webzeral\Payamount\PayamountServiceProvider"
-    webzera/payamount
 
-    In url use /payment
+    And paycredentials.php check credentials and url paths    
+
+    In url use /payment ex: 'http://hostname/payment'
 
     In migration table data's like,
         id 	type_name 	        type_desc 	            status
