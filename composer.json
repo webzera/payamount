@@ -1,0 +1,31 @@
+{
+    "name": "webzera/payamount",
+    "description": "paypal integration",
+    "type": "library",
+    "require": {       
+        "php": "^7.1.3",
+        "ext-curl": "*",
+        "ext-json": "*",
+        "psr/log": "^1.0.0",
+        "paypal/rest-api-sdk-php": "^1.14"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^7.5"
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "Webzera\\Payamount\\PayamountServiceProvider"
+            ]
+        }
+    },
+    "autoload": {
+        "psr-4": {
+            "Webzera\\Payamount\\": "src/",
+            "PayPal\\": "lib/"
+        }     
+    },
+    "license": "MIT",
+    
+    "minimum-stability": "dev"
+}
