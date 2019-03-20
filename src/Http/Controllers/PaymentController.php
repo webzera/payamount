@@ -106,7 +106,7 @@ class PaymentController extends Controller
         $locpayment=Locpayment::where(['payment_id' => $paymentId,'pay_token' => $gettoken])->first();
 
         $locpayment->payer_id=$payerId;
-        $locpayment->payment_status=1;
+        $locpayment->payment_status='1';
 
         $paymentId = request('paymentId');
         $payment = Payment::get($paymentId, $apiContext);
@@ -142,53 +142,7 @@ class PaymentController extends Controller
         $locpayment->save();
 
         return redirect('/')->with('success', 'Your Amount Paid Successfully, Thanks. Check your Orders');
-    }
-    /*
-    public function actionPaypaid()
-    {
-        $session = Yii::$app->session;
-        if(isset($_GET['token']) )
-        {   //token=EC-8ML82352J94652336
-            //paymentId=PAY-3VC15722C81712437LANVFVQ&token=EC-8ML82352J94652336&PayerID=6AVHXFW4Z884Y
-            if(isset($_GET['paymentId'],$_GET['token'], $_GET['PayerID']))
-            {
-                $paymentId=$_GET['paymentId'];
-                $payerId=$_GET['PayerID'];
-                $rettoken=$_GET['token'];
-
-                $payment = Payment::get($paymentId, Yii::$app->paypal->getContext());
-
-                $execute = new PaymentExecution();
-                $execute->setPayerId($payerId);
-
-                try{
-                    $result = $payment->execute($execute, Yii::$app->paypal->getContext());
-                } catch (Exception $e) {
-                    $data = json_decode($e->getData());
-                    //var_dump($data);
-                    echo $data->message;
-                    die();
-                }
-                $getorderid=Orderbasic::find()->where('ret_paymentid = :ret_paymentid', [':ret_paymentid' => $paymentId])->one()['id']; 
-                $reorderbasic = $this->findOrdbasicModel($getorderid);                
-                $reorderbasic->payment_status=1;
-                $reorderbasic->order_statusid=7;
-                //$reorderbasic->ret_paymentid=$paymentId;
-                $reorderbasic->ret_payerid=$payerId;
-                $reorderbasic->ret_token=$rettoken;
-                $reorderbasic->save(false);
-
-                $delses=$session['sess_cartid'];
-                Cart::deleteAll('session_id = :session_id', [':session_id' => $delses]);
-                unset($session['sess_cartid']);
-                $session->setFlash('success', 'Your Amount Paid Successfully, Thanks. Check your Orders');    
-                return $this->redirect('index');
-            }
-            
-        }
-    }
-
-    */
+    }    
     public function cancel(){
     $ret_token=$_GET['token'];
     echo $ret_token; echo "transaction canceled packages";

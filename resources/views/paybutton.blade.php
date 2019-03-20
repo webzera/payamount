@@ -16,7 +16,7 @@
     <div class="container">
         <form method="post" action="{{ route('create-payment')}}">
         @csrf
-            <input type="submit" value="Pay Now FP">
+            <input type="submit" value="20 Pay Now">
         </form>
 
     </div>
