@@ -5,7 +5,7 @@ Route::group([
     'namespace' => $namespace,
     'prefix' => 'payment',
 ], function(){
-    // Route::get('/', function(){ return ['hey', 'John']; });
+    // Route::get('/', function(){ return ['hey', 'John super']; });
     
     Route::get('/', 'PaymentController@index')->name('pay');
     Route::Post('create', 'PaymentController@create')->name('create-payment');
